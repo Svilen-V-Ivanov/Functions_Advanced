@@ -2,17 +2,15 @@ def math_operations(*args, **kwargs):
     numbers = [float(x) for x in args]
     processes = {}
     for num in range(len(numbers)):
-        for key, value in kwargs.items():
-            if num % 4 == 0:
-                kwargs['a'] += numbers[num]
-            if num % 4 == 1:
-                kwargs['s'] -= numbers[num]
-            if num % 4 == 2:
-                if numbers[num] != 0:
-                    kwargs['d'] /= numbers[num]
-            if num % 4 == 3:
-                kwargs['m'] *= numbers[num]
-            break
+        if num % 4 == 0:
+            kwargs['a'] += numbers[num]
+        if num % 4 == 1:
+            kwargs['s'] -= numbers[num]
+        if num % 4 == 2:
+            if numbers[num] != 0:
+                kwargs['d'] /= numbers[num]
+        if num % 4 == 3:
+            kwargs['m'] *= numbers[num]
 
     sorted_list =[f"{key}: {value:.1f}" for key, value in sorted(kwargs.items(), key=lambda x: (-x[1], x[0]))]
     return '\n'.join(sorted_list)
